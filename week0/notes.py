@@ -65,4 +65,10 @@ gen = (i for i in [1,2,3)   # GENERATOR OBJ
 iter = zip([1,2], [3,4])    # ITERATOR OBJ
     list(iter)              # [(1,3), (2,4)]
 
+obj.keys()
+obj.values()
+obj.items()                 # dict_items([(k, v), (k, v)])
+    list(obj.items())       # [(k, v), (k, v)]
+
+
 '''

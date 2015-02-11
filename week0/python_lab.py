@@ -70,7 +70,7 @@ list_of_numbers = [20, 10, 15, 75]
 # Replace ... with a one-line expression that evaluates to the average of list_of_numbers.
 # Your expression should refer to the variable list_of_numbers, and should work
 # for a list of any length greater than zero.
-list_average = sum({x for x in list_of_numbers})/len(list_of_numbers)
+list_average = sum([x for x in list_of_numbers])/len(list_of_numbers)
 
 
 
@@ -91,7 +91,7 @@ LofL_sum = sum([sum(x) for x in LofL])
 ## 13: (Task 13) Three-element tuples summing to zero
 S = {-4, -2, 1, 2, 5, 0}
 # Replace [ ... ] with a one-line list comprehension in which S appears
-zero_sum_list = [(x, y, z) for x in S for y in S for z in S if (sum[x, y, z] == 0)]
+zero_sum_list = [(x, y, z) for x in S for y in S for z in S if (sum([x, y, z]) == 0)]
 
 
 
@@ -126,7 +126,7 @@ odd_num_list_range = {x for x in range(1, 100, 2)}
 # Instead, it should use zip and range.
 # Note: zip() does not return a list. It returns an 'iterator of tuples'
 L = ['A', 'B', 'C', 'D', 'E']
-range_and_zip = list(zip(L, list(range(0,5))))
+range_and_zip = list(zip(L, list(range(5))))
 
 
 
@@ -153,22 +153,22 @@ value_list = [obj[k] for obj in dlist]
 dlist = [{'Bilbo':'Ian','Frodo':'Elijah'},{'Bilbo':'Martin','Thorin':'Richard'}]
 k = 'Bilbo'
 #Replace [...] with a one-line comprehension 
-value_list_modified_1 = [...] # <-- Use the same expression here
+value_list_modified_1 = [obj[k] if k in obj else 'NOT PRESENT' for obj in dlist]
 k = 'Frodo'
-value_list_modified_2 = [...] # <-- as you do here
+value_list_modified_2 = [obj[k] if k in obj else 'NOT PRESENT' for obj in dlist]
 
 
 
 ## 22: (Task 22) A dictionary mapping integers to their squares
 # Replace {...} with a one-line dictionary comprehension
-square_dict = {...}
+square_dict = {x:x**2 for x in range(100)}
 
 
 
 ## 23: (Task 23) Making the identity function
 D = {'red','white','blue'}
 # Replace {...} with a one-line dictionary comprehension
-identity_dict = {...}
+identity_dict = {x:x for x in D}
 
 
 
@@ -178,7 +178,7 @@ digits = set(range(base))
 # Replace { ... } with a one-line dictionary comprehension
 # Your comprehension should use the variables 'base' and 'digits' so it will work correctly if these
 # are assigned different values (e.g. base = 2 and digits = {0,1})
-representation_dict = { ... }
+representation_dict = {x:(a,b,c) for a in digits for b in digits for c in digits for x in range(base**3) if (a*(base**2) + b*base + c == x)}
 
 
 
@@ -186,19 +186,19 @@ representation_dict = { ... }
 id2salary = {0:1000.0, 1:1200.50, 2:990}
 names = ['Larry', 'Curly', 'Moe']
 # Replace { ... } with a one-line dictionary comprehension that uses id2salary and names.
-listdict2dict = { ... }
+listdict2dict = {name:salary for (id,salary) in id2salary.items() for name in names if names[id] == name}
 
 
 
 ## 26: (Task 26) Procedure nextInts
 # Complete the procedure definition by replacing [ ... ] with a one-line list comprehension
-def nextInts(L): return [ ... ]
+def nextInts(L): return [x+1 for x in L]
 
 
 
 ## 27: (Task 27) Procedure cubes
 # Complete the procedure definition by replacing [ ... ] with a one-line list comprehension
-def cubes(L): return [ ... ] 
+def cubes(L): return [x**3 for x in L]
 
 
 
@@ -207,7 +207,7 @@ def cubes(L): return [ ... ]
 # Output: the list L such that L[i] is the value associated in dct with keylist[i]
 # Example: dict2list({'a':'A', 'b':'B', 'c':'C'},['b','c','a']) should equal ['B','C','A']
 # Complete the procedure definition by replacing [ ... ] with a one-line list comprehension
-def dict2list(dct, keylist): return [ ... ]
+def dict2list(dct, keylist): return [dct[k] for k in keylist]
 
 
 
@@ -216,5 +216,7 @@ def dict2list(dct, keylist): return [ ... ]
 # Output: the dictionary that maps keylist[i] to L[i] for i=0,1,...len(L)-1
 # Example: list2dict(['A','B','C'],['a','b','c']) should equal {'a':'A', 'b':'B', 'c':'C'}
 # Complete the procedure definition by replacing { ... } with a one-line dictionary comprehension
-def list2dict(L, keylist): return { ... }
+def list2dict(L, keylist): return {keylist[i]:L[i] for i in range(len(L))}
 
+# def all_3_digit_numbers(base, digits): return {x:(a,b,c) for a in digits for b in digits for c in digits for x in range(base**3) if (a*(base**2) + b*base + c == x)}
+def all_3_digit_numbers(base, digits): return set(range(base**3))
