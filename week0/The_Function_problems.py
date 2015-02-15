@@ -2,10 +2,6 @@
 coursera = 1
 # Please fill out this stencil and submit using the provided submission script.
 
-
-
-
-
 ## 1: (Problem 1) Tuple Sum
 def tuple_sum(A, B):
     '''
@@ -20,8 +16,8 @@ def tuple_sum(A, B):
     >>> tuple_sum([(1,2), (10,20)],[(3,4), (30,40)])
     [(4, 6), (40, 60)]
     '''
-    pass
-
+    # len(A) == len(output)
+    return [(a + c, b + d) for ((a, b), (c, d)) in list(zip(A, B))]
 
 
 ## 2: (Problem 2) Inverse Dictionary
@@ -36,8 +32,7 @@ def inv_dict(d):
     >>> inv_dict({'goodbye':  'au revoir', 'thank you': 'merci'})
     {'merci':'thank you', 'au revoir':'goodbye'}]
     '''
-    pass
-
+    return {v:k for (k, v) in d.items()}
 
 
 ## 3: (Problem 3) Nested Comprehension
@@ -52,21 +47,31 @@ def row(p, n):
     >>> row(10,4)
     [10, 11, 12, 13]
     '''
-    pass
+    return [p + i for i in range(0, n)]
 
-comprehension_with_row = ...
+comprehension_with_row = [row(x, 20) for x in list(range(0, 15))]
 
-comprehension_without_row = ...
+comprehension_without_row = [[x + i for i in range(0, 20)] for x in list(range(0, 15))]
 
 
 
 ## 4: (Problem 4) Probability Exercise 1
-Pr_f_is_even = ...
-Pr_f_is_odd  = ...
+'''
+f(x) = x + 1, D = {1,2,3,5,6}, coD = {2,3,4,6,7}
+Pr(1) = 0.5, Pr(2) = 0.2, Pr(3) = Pr(5) = Pr(6) = 0.1
+
+Pr(x) == Pr(image(x))
+'''
+Pr_f_is_even = 0.7
+Pr_f_is_odd = 0.3
 
 
 
 ## 5: (Problem 5) Probability Exercise 2
-Pr_g_is_1    = ...
-Pr_g_is_0or2 = ...
+'''
+g(x) = x % 3, D = {1,2,3,4,5,6,7}, coD = {0,1,2}
+Pr(1) = Pr(2) = Pr(3) = 0.2, Pr(4) = Pr(5) = Pr(6) = Pr(7) = 0.1
+'''
+Pr_g_is_1    = 0.4
+Pr_g_is_0or2 = 0.6
 

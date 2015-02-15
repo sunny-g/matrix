@@ -2,9 +2,7 @@
 coursera = 1
 # Please fill out this stencil and submit using the provided submission script.
 
-
-
-
+import random
 
 ## 1: (Task 1) Movie Review
 ## Task 1
@@ -13,9 +11,7 @@ def movie_review(name):
     Input: the name of a movie
     Output: a string (one of the review options), selected at random using randint
     """
-    return ...
-
-
+    return ['See it!', 'A gem!', 'Ideological claptrap!'][random.randint(0, 2)]
 
 ## 2: (Task 2) Make Inverse Index
 def makeInverseIndex(strlist):
@@ -32,8 +28,10 @@ def makeInverseIndex(strlist):
     >>> makeInverseIndex(['hello world','hello','hello cat','hellolot of cats']) == {'hello': {0, 1, 2}, 'cat': {2}, 'of': {3}, 'world': {0}, 'cats': {3}, 'hellolot': {3}}
     True
     """
-    pass
-
+    # for each word, check if any sets contain it
+        # if so, add it to word's set
+    strlist = list(enumerate(strlist))
+    return {word: {idx for (idx, line) in strlist if word in line.split()} for (idx, line) in strlist for word in line.split()}
 
 
 ## 3: (Task 3) Or Search
@@ -49,9 +47,11 @@ def orSearch(inverseIndex, query):
     >>> orSearch(idx, ['Johann', 'Carl'])
     {0, 2, 3, 4, 5}
     """
-    pass
-
-
+    res = set()
+    for word in inverseIndex:
+        if word in query:
+            res.update(inverseIndex[word])
+    return res
 
 ## 4: (Task 4) And Search
 def andSearch(inverseIndex, query):
@@ -66,5 +66,9 @@ def andSearch(inverseIndex, query):
     >>> andSearch(idx, ['Johann', 'Bach'])
     {0, 4}
     """
-    pass
+    res = set(range(len(inverseIndex.keys())))
+    for word in inverseIndex:
+        if word in query:
+            res.intersection_update(inverseIndex[word])
+    return res
 

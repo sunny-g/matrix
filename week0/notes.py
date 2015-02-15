@@ -65,10 +65,21 @@ gen = (i for i in [1,2,3)   # GENERATOR OBJ
 iter = zip([1,2], [3,4])    # ITERATOR OBJ
     list(iter)              # [(1,3), (2,4)]
 
+enum = enumerate(['a', 'b'] # ENUMERATOR OBJ        ## you can't enum an obj
+    list(enum)              # [(0, 'a'), (1, 'b')]
+
 obj.keys()
 obj.values()
 obj.items()                 # dict_items([(k, v), (k, v)])
     list(obj.items())       # [(k, v), (k, v)]
+
+import module as mod
+
+import week0.resources.moduleName
+                            # requires that every directory named contains a file named __init__.py
+
+from imp import reload      # allows you to reload(module) when you make changes
+
 
 
 '''
